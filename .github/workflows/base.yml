@@ -21,8 +21,14 @@ jobs:
       # - name: publish
       - run: git config --global user.email "njkznu@gmail.com"
       - run: git config --global user.name "kuzanatoliy"
+      # - run: git checkout origin/gh-pages
+      # - run: git reset --hard HEAD~1
+      # - run: git push
+      # - run: git checkout ${GITHUB_REF##*/}
       - run: git add -f dist
       - run: git commit -am "deploy preview to ng-pages"
-      - run: git push origin --delete gh-pages
-      - run: git subtree push --prefix dist origin gh-pages
+      # - run: git push origin --delete gh-pages
+      # - run: git subtree pull --prefix dist origin gh-pages
+      # - run: git subtree push --prefix dist origin gh-pages
+      - run: git push origin `git subtree split --prefix dist deploy`:refs/heads/gh-pages --force
       - run: git reset --hard HEAD~1
