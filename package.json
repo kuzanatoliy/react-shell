@@ -2,10 +2,13 @@
   "name": "app",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://kuzanatoliy.github.io/react-shell",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint src/**/*.ts",
+    "prettier:check": "prettier --check ."
   },
   "dependencies": {
     "react": "^17.0.2",
