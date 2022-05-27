@@ -1,4 +1,4 @@
-name: pipeline
+name: quality-gates
 on: [push, pull_request]
 jobs:
   pipeline:
@@ -14,17 +14,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: install
         run: npm install
-      - name: prettier
-        run: npm run prettier:check
       - name: linter
         run: yarn run lint
       - name: build
         run: npm run build
-      - name: deploy
-        run: |
-          git config --global user.email "njkznu@gmail.com"
-          git config --global user.name "kuzanatoliy"
-          git add -f dist
-          git commit -am "deploy preview to ng-pages"
-          git push origin `git subtree split --prefix dist deploy`:refs/heads/gh-pages --force
-          git reset --hard HEAD~1
